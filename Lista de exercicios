@@ -5,3 +5,6 @@
 3. select * livros.titulo from aula_db_exemplos.livros where livros.autor_id = 1;
 
 4. select * alunos.nome from alunos inner join matriculas on alunos.id = matriculas.aluno_id where curso = 'Engenharia de Software';
+
+5.select * produto, SUM(receita) as Receita_total from vendas group by produto;
+
