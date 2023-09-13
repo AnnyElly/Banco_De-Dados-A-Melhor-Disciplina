@@ -25,6 +25,21 @@
 
 14.select curso, nome from alunos right join matriculas on alunos.id = matriculas.aluno_id;
 
+16. with contagemlivros as (
+    select*autor_id, count(*) as quantidadelivros
+    from livros
+    group by autor_id
+)
+
+select*autores.nome as autor, quantidadelivros as maiorquantidadelivros
+from contagemlivros
+join autores on contagemlivros.autor_id = autores.id
+where quantidadelivros = (
+    select max(quantidadelivros) 
+    from contagemlivros
+);
+
+
 
 
 
