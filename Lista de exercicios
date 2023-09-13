@@ -13,4 +13,6 @@
 7.select * curso, count(nome) as número_de_alunos from matriculas inner join alunos on matriculas.aluno_id=alunos.id group by curso;
 
 8.select * produto, AVG(receita) as receita_media from vendas group by produto;
+9.select * produto, SUM(receita) as receita_total from vendas group by produto having receita_total >'10.000';
+
 
