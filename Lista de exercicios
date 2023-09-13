@@ -1,1 +1,4 @@
 1. select * livros.titulo from aula_db_exemplos.livros;
+
+2. select * autores.nome from aula_db_exemplos.autores where autores.nascimento < '1901-01-01';
+
