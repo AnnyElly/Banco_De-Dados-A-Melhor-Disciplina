@@ -23,6 +23,9 @@
 
 13.select*nome, curso from alunos inner join matriculas on alunos.id = matriculas.aluno_id; 
 
+14.select curso, nome from alunos right join matriculas on alunos.id = matriculas.aluno_id;
+
+
 
 
 
