@@ -102,3 +102,26 @@ DELIMITER ;
 
 
 CALL sp_TitulosPorCategoria('História');
+
+exer.7
+DELIMITER //
+CREATE PROCEDURE sp_AdicionarLivro(IN livroTitulo VARCHAR(255), IN editoraID INT, IN anoPublicacao INT, IN numeroPaginas INT, IN categoriaID INT)
+BEGIN
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION
+    BEGIN
+        ROLLBACK;
+        SELECT 'Erro: Não foi possível adicionar o livro.' AS Mensagem;
+    END;
+    
+    START TRANSACTION;
+    
+    INSERT INTO Livro (Titulo, Editora_ID, Ano_Publicacao, Numero_Paginas, Categoria_ID)
+    VALUES (livroTitulo, editoraID, anoPublicacao, numeroPaginas, categoriaID);
+    
+    COMMIT;
+    
+    SELECT 'Livro adicionado com sucesso.' AS Mensagem;
+END //
+DELIMITER ;
+
+CALL sp_AdicionarLivro('Novo Livro', 1, 2022, 200, 2);
