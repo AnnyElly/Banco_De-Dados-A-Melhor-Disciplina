@@ -125,3 +125,16 @@ END //
 DELIMITER ;
 
 CALL sp_AdicionarLivro('Novo Livro', 1, 2022, 200, 2);
+
+exer.8 
+DELIMITER //
+CREATE PROCEDURE sp_AutorMaisAntigo()
+BEGIN
+    SELECT Nome, Sobrenome
+    FROM Autor
+    WHERE Data_Nascimento = (SELECT MIN(Data_Nascimento) FROM Autor);
+END //
+DELIMITER ;
+
+
+CALL sp_AutorMaisAntigo();
